@@ -22,6 +22,53 @@
           <h2><span class="book-info">Status: </span>Done Reading ✅</h2>
         </li> -->
       </div>
+      <div class="container-form">
+        <form class="form">
+          <label for="title">Title</label>
+          <input
+            class="form-item"
+            type="text"
+            name=""
+            id="title"
+            placeholder="Enter Book Name"
+          />
+          <label for="author">Author</label>
+          <input
+            class="form-item"
+            type="text"
+            name=""
+            id="author"
+            placeholder="Author Name"
+          />
+          <label for="pages">Pages</label>
+          <input
+            class="form-item"
+            type="number"
+            name=""
+            id="pages"
+            placeholder="Pages in number"
+          />
+          <label class="read-status" for="read-status">Read Status</label>
+          <input
+            class="form-item read"
+            type="radio"
+            name="read-status"
+            id="read-status"
+            value="true"
+          />
+
+          <label for="read">Read</label>
+          <input
+            class="form-item not-read"
+            type="radio"
+            name="read-status"
+            value="false"
+            id="read-status"
+          />
+          <label for="read">Haven't Read</label>
+          <input class="form-item" type="submit" value="Submit" id="submit" />
+        </form>
+      </div>
     </div>
   </body>
 </html>
