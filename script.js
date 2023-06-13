@@ -6,7 +6,7 @@ const authorInput = document.getElementById('author');
 const pagesInput = document.getElementById('pages');
 const readInputYes = document.querySelector('.read');
 const readInputNo = document.querySelector('.not-read');
-// const readInput = document.querySelectorAll('.read-status');
+const form = document.querySelector('.wrap-2');
 const submitBtn = document.getElementById('submit');
 
 let myLibrary = [];
@@ -29,9 +29,9 @@ function Book(title, author, pages, read) {
     <h3><span class="book-info">Author:</span> ${author}</h3>
     <h5><span class="book-info">Pages: </span>${pages} Pages</h5>
     <h2>
-    <span class="book-info">Status: </span> ${
-      read ? 'Done Reading ✅' : "Haven't read yet"
-    } 
+    <span class="book-info">Status: </span> ${(read = true
+      ? 'Done Reading ✅'
+      : "Haven't read yet")} 
     </h2>
     </li>`;
     container.insertAdjacentHTML('afterbegin', html);

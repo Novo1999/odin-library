@@ -18,6 +18,30 @@ ul,
 .list {
   list-style-type: none;
 }
+/* Add Book Btn */
+.addBook {
+  display: flex;
+  position: relative;
+  left: 5%;
+  bottom: 4rem;
+  height: 3rem;
+}
+.addBook button {
+  font-family: var(--secondary-font);
+  font-weight: 900;
+  width: 8rem;
+  background-color: dodgerblue;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+}
+.addBook button:hover {
+  border: 2px solid black;
+  transform: scale(1.1);
+  transition: transform 0.2s linear;
+  color: white;
+}
+/* Navbar */
 .nav {
   display: flex;
   justify-content: center;
@@ -29,6 +53,7 @@ ul,
   font-size: 3rem;
   font-family: var(--primary-font);
 }
+/* Books */
 .list {
   border: 1px solid black;
   margin: 20px;
@@ -59,15 +84,27 @@ ul,
   justify-content: center;
 }
 .container-form {
-  position: relative;
-  top: 25rem;
-  right: 2rem;
+  background-color: lightslategrey;
   box-shadow: 0 0 20px 2px;
   border-radius: 1rem;
+  width: 25rem;
 }
-
+.wrap-2 {
+  display: flex;
+  justify-content: center;
+  margin-top: 8rem;
+  animation: opacity 1s linear;
+}
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+/* Form */
 .form {
-  background-color: transparent;
   width: 25rem;
   height: 30rem;
   display: flex;
@@ -85,6 +122,9 @@ ul,
 }
 .read-status {
   font-size: 30px;
+}
+#read-status {
+  cursor: pointer;
 }
 #submit {
   cursor: pointer;
