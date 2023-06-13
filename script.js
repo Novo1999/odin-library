@@ -1,18 +1,21 @@
+'strict mode';
+
 const container = document.querySelector('.container');
 let myLibrary = [];
 
-const book = function (title, author, pages, read) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
+}
 
-  this.addBookToLibrary = function (...book) {
-    return myLibrary.push(book);
-  };
+addBookToLibrary = function (...book) {
+  return myLibrary.push(...book);
+};
 
-  this.renderBook = function () {
-    const html = `<li class="list">
+Book.prototype.renderBook = function () {
+  const html = `<li class="list">
     <p class="name">${this.title}</p>
     <h3><span class="book-info">Author:</span> ${this.author}</h3>
     <h5><span class="book-info">Pages: </span>${this.pages} Pages</h5>
@@ -22,20 +25,27 @@ const book = function (title, author, pages, read) {
     } 
     </h2>
     </li>`;
-    container.innerHTML += html;
-  };
+  container.innerHTML += html;
 };
 
-const hobbit = new book('Hobbit', 'J.R.R Tolkien', 295, true);
-const taken = new book('Taken', 'J.R.R Tolkien', 295, true);
-const jello = new book('Jello', 'Hemlo', 295, false);
-const cork = new book('Cork', 'J.R.R Tolkien', 295, true);
-const blob = new book('Blob', 'Demlo', 295, true);
-const tom = new book('Tom', 'J.R.R Tolkien', 295, false);
+function createObject() {}
 
-book.addBookToLibrary(hobbit, taken, jello, cork, blob, tom);
-console.log(myLibrary);
+const hobbit = new Book('Hobbit', 'J.R.R Tolkien', 295, true);
+const taken = new Book('Taken', 'J.R.R Tolkien', 295, true);
+const jello = new Book('Jello', 'Hemlo', 295, false);
+const cork = new Book('Cork', 'J.R.R Tolkien', 295, true);
+const blob = new Book('Blob', 'Demlo', 295, true);
+const tom = new Book('Tom', 'J.R.R Tolkien', 295, false);
 
-myLibrary.forEach((book, index) => {
-  console.log(book[index]);
-});
+addBookToLibrary(hobbit, taken, jello, cork, blob, tom);
+
+myLibrary.forEach(book => book.renderBook());
+// myLibrary.push(hobbit, taken, jello, cork, blob, tom);
+
+/* Steps */
+
+// User writes on a form (title,author,pages,read or not)
+// form submits
+// A new object is created
+// Object pushed into the myLibrary array
+// Render the book to the library
