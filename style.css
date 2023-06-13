@@ -12,6 +12,7 @@
 
 body {
   background-color: darksalmon;
+  overflow-x: hidden;
 }
 
 ul,
@@ -66,11 +67,13 @@ ul,
   gap: 2rem;
   padding-left: 10px;
   align-items: center;
+  animation: opacity 0.5s linear;
 }
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 2rem 20rem 0 20rem;
+  width: 100vh;
 }
 .book-info {
   color: darkviolet;
@@ -83,17 +86,15 @@ ul,
   display: flex;
   justify-content: center;
 }
-.container-form {
-  background-color: lightslategrey;
-  box-shadow: 0 0 20px 2px;
-  border-radius: 1rem;
-  width: 25rem;
-}
+
+/* Form */
 .wrap-2 {
-  display: flex;
+  display: none;
+
   justify-content: center;
   margin-top: 8rem;
   animation: opacity 1s linear;
+  position: relative;
 }
 @keyframes opacity {
   0% {
@@ -103,7 +104,13 @@ ul,
     opacity: 100;
   }
 }
-/* Form */
+.container-form {
+  position: relative;
+  background-color: lightslategrey;
+  box-shadow: 0 0 20px 2px;
+  border-radius: 1rem;
+  width: 25rem;
+}
 .form {
   width: 25rem;
   height: 30rem;

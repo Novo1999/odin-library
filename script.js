@@ -8,6 +8,7 @@ const readInputYes = document.querySelector('.read');
 const readInputNo = document.querySelector('.not-read');
 const form = document.querySelector('.wrap-2');
 const submitBtn = document.getElementById('submit');
+const addBook = document.querySelector('.addBook');
 
 let myLibrary = [];
 
@@ -29,9 +30,9 @@ function Book(title, author, pages, read) {
     <h3><span class="book-info">Author:</span> ${author}</h3>
     <h5><span class="book-info">Pages: </span>${pages} Pages</h5>
     <h2>
-    <span class="book-info">Status: </span> ${(read = true
-      ? 'Done Reading ✅'
-      : "Haven't read yet")} 
+    <span class="book-info">Status:  ${
+      read === 'true' ? 'Done Reading ✅' : "Haven't read yet </span>"
+    } 
     </h2>
     </li>`;
     container.insertAdjacentHTML('afterbegin', html);
@@ -39,7 +40,10 @@ function Book(title, author, pages, read) {
 }
 
 function createObj(title, author, pages, read) {
-  if (!title || !author || !pages || !read) return;
+  if (!title || !author || !pages || !read) {
+    alert('❗Fill all info❗');
+    return;
+  }
   return new Book(title, author, pages, read);
 }
 
@@ -61,6 +65,10 @@ submitBtn.addEventListener('click', e => {
     : readInputNo.value;
   const newObj = createObj(title, author, pagesCount, readStatus);
   addBookToLibrary(newObj);
-  console.log(myLibrary);
   newObj.renderBook(title, author, pagesCount, readStatus);
+  form.style.display = 'none';
+});
+
+addBook.addEventListener('click', () => {
+  form.style.display = 'flex';
 });
