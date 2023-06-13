@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-font: 'Rubik Dirt', cursive;
+  --secondary-font: 'Noto Sans', sans-serif;
+}
+
+body {
+  background-color: darksalmon;
+}
+
+ul,
+.list {
+  list-style-type: none;
+}
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 30px 3px;
+  height: 5rem;
+}
+.nav li {
+  font-size: 3rem;
+  font-family: var(--primary-font);
+}
+.list {
+  border: 1px solid black;
+  margin: 20px;
+  height: 15rem;
+  width: 25rem;
+  background-color: wheat;
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 2rem 20rem 0 20rem;
+}
