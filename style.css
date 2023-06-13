@@ -36,9 +36,26 @@ ul,
   height: 15rem;
   width: 25rem;
   background-color: wheat;
+  font-family: var(--secondary-font);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-left: 10px;
+  align-items: center;
 }
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 2rem 20rem 0 20rem;
+}
+.book-info {
+  color: darkviolet;
+}
+.name {
+  font-family: var(--primary-font);
+  font-size: 40px;
+}
+.wrap {
+  display: flex;
+  justify-content: center;
 }
