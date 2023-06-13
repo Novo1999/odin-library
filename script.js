@@ -48,7 +48,6 @@ function createObj(title, author, pages, read) {
 }
 
 /* Steps */
-
 // User writes on a form (title,author,pages,read or not)
 // form submits
 // A new object is created
@@ -67,8 +66,10 @@ submitBtn.addEventListener('click', e => {
   addBookToLibrary(newObj);
   newObj.renderBook(title, author, pagesCount, readStatus);
   form.style.display = 'none';
+  container.style.display = 'grid';
 });
 
 addBook.addEventListener('click', () => {
   form.style.display = 'flex';
+  container.style.display = 'none';
 });

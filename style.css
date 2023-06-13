@@ -72,7 +72,7 @@ ul,
 .container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin: 2rem 20rem 0 20rem;
+  margin: 2rem 20rem 0 0;
   width: 100vh;
 }
 .book-info {
