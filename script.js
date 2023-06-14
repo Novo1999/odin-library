@@ -1,4 +1,4 @@
-'strict mode';
+'use strict';
 
 const container = document.querySelector('.container');
 const titleInput = document.getElementById('title');
@@ -10,6 +10,10 @@ const formDiv = document.querySelector('.wrap-2');
 const submitBtn = document.getElementById('submit');
 const addBook = document.querySelector('.btn-add');
 const form = document.querySelector('.form');
+const crossBtn = document.querySelector('.cross');
+const deleteBtn = document.querySelector('.btn-delete');
+const deletePrompt = document.querySelector('.deleteAllPrompt');
+const promptBtn = document.querySelectorAll('.promptBtn');
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -18,9 +22,7 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
 
-  // createObject();
-
-  addBookToLibrary = function (...book) {
+  Book.addBookToLibrary = function (...book) {
     myLibrary.push(...book);
   };
 
@@ -47,6 +49,7 @@ function createObj(title, author, pages, read) {
   return new Book(title, author, pages, read);
 }
 
+let retrievedBooks = JSON.parse(localStorage.getItem('savedBooks'));
 /* Steps */
 // User writes on a form (title,author,pages,read or not)
 // form submits
@@ -63,8 +66,8 @@ submitBtn.addEventListener('click', e => {
     ? readInputYes.value
     : readInputNo.value;
   const newObj = createObj(title, author, pagesCount, readStatus);
-  console.log(newObj);
-  addBookToLibrary(newObj);
+  if (retrievedBooks === null) myLibrary = [];
+  Book.addBookToLibrary(newObj);
   newObj.renderBook(title, author, pagesCount, readStatus);
   formDiv.style.display = 'none';
   container.style.display = 'grid';
@@ -73,8 +76,9 @@ submitBtn.addEventListener('click', e => {
 });
 
 function savedLibrary() {
-  const retrievedBooks = JSON.parse(localStorage.getItem('savedBooks'));
+  myLibrary = [];
   myLibrary = retrievedBooks;
+  if (retrievedBooks === null) return;
   myLibrary.forEach(book => {
     const savedLibrary = createObj(
       book.title,
@@ -88,6 +92,36 @@ function savedLibrary() {
 savedLibrary();
 
 addBook.addEventListener('click', () => {
-  formDiv.style.display = 'flex';
-  container.style.display = 'none';
+  formDisplay('flex', 'none');
 });
+
+crossBtn.addEventListener('click', () => {
+  formDisplay('none', 'grid');
+});
+
+function formDisplay(formDisp, containerDisp) {
+  formDiv.style.display = formDisp;
+  container.style.display = containerDisp;
+}
+
+deleteBtn.addEventListener('click', () => {
+  if (container.innerHTML !== '') deleteAll();
+});
+
+function deleteAll() {
+  deletePrompt.style.display = 'flex';
+  deletePrompt.addEventListener('click', e => {
+    if (e.target.classList.contains('yes')) {
+      deletePrompt.style.display = 'none';
+      setTimeout(() => {
+        retrievedBooks = null;
+        localStorage.clear();
+        container.style.display = 'none';
+        container.innerHTML = '';
+      }, 500);
+    } else {
+      deletePrompt.style.display = 'none';
+      container.style.display = 'grid';
+    }
+  });
+}

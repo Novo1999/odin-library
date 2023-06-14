@@ -20,14 +20,16 @@ ul,
   list-style-type: none;
 }
 /* Add Book Btn */
-.addBook {
+.addBooks {
   display: flex;
   position: relative;
   left: 5%;
   bottom: 4rem;
   height: 3rem;
 }
-.addBook button {
+
+.addBooks button,
+.deleteBooks button {
   font-family: var(--secondary-font);
   font-weight: 900;
   width: 8rem;
@@ -36,10 +38,67 @@ ul,
   border-radius: 2rem;
   cursor: pointer;
 }
-.addBook button:hover {
+.addBooks button:hover,
+.deleteBooks button:hover {
   border: 2px solid black;
   transform: scale(1.1);
   transition: transform 0.2s linear;
+  color: white;
+}
+/* Delete books btn */
+.deleteBooks {
+  display: flex;
+  position: relative;
+  left: 90%;
+  bottom: 6.8rem;
+  height: 3rem;
+}
+/* Delete All prompt */
+.deleteAllPrompt {
+  font-family: var(--secondary-font);
+  font-size: 8px;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+  width: 20rem;
+  height: 10rem;
+  text-align: center;
+  background-color: cornflowerblue;
+  box-shadow: 0px 0px 10px 1px black;
+  animation: opacity 1s linear;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.deleteAllPrompt h1 {
+  margin-bottom: 2rem;
+}
+.btn-div {
+  display: flex;
+  gap: 20px;
+}
+.promptBtn {
+  width: 4rem;
+  height: 3rem;
+  border: none;
+  border-radius: 1rem;
+  background: yellow;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px 1px black;
+}
+.yes:hover {
+  transition: all 0.3s linear;
+  background: red;
+  color: white;
+}
+.no:hover {
+  transition: all 0.3s linear;
+  background: green;
   color: white;
 }
 /* Navbar */
@@ -139,4 +198,10 @@ ul,
 #submit:hover {
   transition: 0.3s all linear;
   background-color: lightblue;
+}
+.cross {
+  float: right;
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
 }
