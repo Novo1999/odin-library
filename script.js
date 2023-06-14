@@ -63,29 +63,31 @@ submitBtn.addEventListener('click', e => {
     ? readInputYes.value
     : readInputNo.value;
   const newObj = createObj(title, author, pagesCount, readStatus);
+  console.log(newObj);
   addBookToLibrary(newObj);
   newObj.renderBook(title, author, pagesCount, readStatus);
   formDiv.style.display = 'none';
   container.style.display = 'grid';
   form.reset();
+  localStorage.setItem('savedBooks', JSON.stringify(myLibrary));
 });
+
+function savedLibrary() {
+  const retrievedBooks = JSON.parse(localStorage.getItem('savedBooks'));
+  myLibrary = retrievedBooks;
+  myLibrary.forEach(book => {
+    const savedLibrary = createObj(
+      book.title,
+      book.author,
+      book.pages,
+      book.read
+    );
+    savedLibrary.renderBook(book.title, book.author, book.pages, book.read);
+  });
+}
+savedLibrary();
 
 addBook.addEventListener('click', () => {
   formDiv.style.display = 'flex';
   container.style.display = 'none';
 });
-
-// localStorage.clear();
-
-// Local Storage
-
-// function retrieveData() {
-//   window.addEventListener('load', () => {
-//     const data = JSON.parse(localStorage.getItem('savedLibrary'));
-//     console.log(data);
-//   });
-// }
-
-// retrieveData();
-
-// console.log(JSON.parse(localStorage.getItem('x')));
