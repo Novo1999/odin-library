@@ -6,10 +6,10 @@ const authorInput = document.getElementById('author');
 const pagesInput = document.getElementById('pages');
 const readInputYes = document.querySelector('.read');
 const readInputNo = document.querySelector('.not-read');
-const form = document.querySelector('.wrap-2');
+const formDiv = document.querySelector('.wrap-2');
 const submitBtn = document.getElementById('submit');
-const addBook = document.querySelector('.addBook');
-
+const addBook = document.querySelector('.btn-add');
+const form = document.querySelector('.form');
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -65,11 +65,27 @@ submitBtn.addEventListener('click', e => {
   const newObj = createObj(title, author, pagesCount, readStatus);
   addBookToLibrary(newObj);
   newObj.renderBook(title, author, pagesCount, readStatus);
-  form.style.display = 'none';
+  formDiv.style.display = 'none';
   container.style.display = 'grid';
+  form.reset();
 });
 
 addBook.addEventListener('click', () => {
-  form.style.display = 'flex';
+  formDiv.style.display = 'flex';
   container.style.display = 'none';
 });
+
+// localStorage.clear();
+
+// Local Storage
+
+// function retrieveData() {
+//   window.addEventListener('load', () => {
+//     const data = JSON.parse(localStorage.getItem('savedLibrary'));
+//     console.log(data);
+//   });
+// }
+
+// retrieveData();
+
+// console.log(JSON.parse(localStorage.getItem('x')));
